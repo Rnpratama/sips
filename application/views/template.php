@@ -7,6 +7,7 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/dist/css/skins/_all-skins.min.css">
 	<!--[if lt IE 9]>
@@ -127,8 +128,8 @@
 							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-circle-o"></i> Categories</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i> Units</a></li>
+							<li><a href="<?=site_url('category')?>"><i class="fa fa-circle-o"></i> Categories</a></li>
+							<li><a href="<?=site_url('unit')?>"><i class="fa fa-circle-o"></i> Units</a></li>
 							<li><a href="#"><i class="fa fa-circle-o"></i> Items</a></li>
 						</ul>
 					</li>
@@ -179,6 +180,15 @@
 	<script src="<?=base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="<?=base_url()?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="<?=base_url()?>assets/dist/js/adminlte.min.js"></script>
+	
 
+	<script src="<?=base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+	<script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$('#table1').DataTable()
+		})
+	</script>
 </body>
 </html>
