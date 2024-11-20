@@ -10,7 +10,7 @@
 
 <!-- :Main Content -->
 <section class="content">
-	
+    <?php $this->view('messages') ?>
     <div class="box">
         <div class="box-header">
             <h3 class="box-title"><?=ucfirst($page)?> Items</h3>
@@ -23,7 +23,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <form action="<?=site_url('item/process')?>" method="post">
+                    <?php echo form_open_multipart('item/process') ?>
                         <div class="form-group">
                             <label>Barcode *</label>
                             <input type="hidden" name="id" value="<?=$row->item_id?>">
@@ -35,10 +35,10 @@
                         </div>
                         <div class="form-group">
                             <label>Category *</label>
-                            <select name="category" class="form-control">
+                            <select name="category" class="form-control" required>
                                 <option value="">- Pilih -</option>
                                 <?php foreach($category->result() as $key => $data) { ?>
-                                    <option value="<?=$data->category_id?>"><?=$data->name?></option>
+                                    <option value="<?=$data->category_id?>" <?=$data->category_id == $row->category_id ? "selected" : null?>><?=$data->name?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -52,12 +52,25 @@
                             <input type="number" name="price" value="<?=$row->price?>" class="form-control" required>
                         </div>
                         <div class="form-group">
+                            <label>Image</label>
+                            <?php if($page == 'edit') {
+                                if($row->image != null) { ?>
+                                    <div style="margin-bottom:5px">
+                                        <img src="<?=base_url('uploads/product/'.$row->image)?>" style="width:80%">
+                                    </div>
+                                <?php
+                                }
+                            } ?>
+                            <input type="file" name="image" class="form-control">
+                            <small>(Biarkan kosong jika tidak <?=$page == 'edit' ? 'diganti' : 'menambahkan'?>)</small>
+                        </div>
+                        <div class="form-group">
                             <button type="submit" name="<?=$page?>" class="btn btn-success btn-flat">
                                 <i class="fa fa-paper-plane"></i> Save
                             </button>
-                            <button type="Reset" class="btn btn-flat">Reset</button>
+                            <button type="Reset" class="btn btn-flat"> Reset</button>
                         </div>
-                    </form>
+                    <?php echo form_close() ?>
                 </div>
             </div>
         </div>
