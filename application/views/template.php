@@ -16,7 +16,7 @@
 	<![endif]-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 		<header class="main-header">
@@ -133,15 +133,18 @@
 							<li <?=$this->uri->segment(1) == 'item' ? 'class="active"' : ''?>><a href="<?=site_url('item')?>"><i class="fa fa-circle-o"></i> Items</a></li>
 						</ul>
 					</li>
-					<li class="treeview">
+					<li class="treeview <?=$this->uri->segment(1) == 'stock' ? 'active' : ''?>">
 						<a href="#">
 							<i class="fa fa-shopping-cart"></i> <span>Transaction</span>
 							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="#"><i class="fa fa-circle-o"></i> Sales</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i> Stock In</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i> Stock Out</a></li>
+							<li <?=$this->uri->segment(1) == 'stock' && $this->uri->segment(2) == 'in' ? 'class="active"' : ''?>>
+								<a href="<?=site_url('stock/in')?>"><i class="fa fa-circle-o"></i> Stock In</a>
+							</li>
+							<li <?=$this->uri->segment(1) == 'stock' && $this->uri->segment(2) == 'out' ? 'class="active"' : ''?>>
+								<a href="<?=site_url('stock/out')?>"><i class="fa fa-circle-o"></i> Stock Out</a></li>
 						</ul>
 					</li>
 					<li class="treeview">
@@ -162,6 +165,7 @@
 			</section>
 		</aside>
 
+		<script src="<?=base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- Content Wrapper -->
 		<div class="content-wrapper">
             <?php echo $contents ?>
@@ -176,12 +180,10 @@
 
 	</div>
 
-	<script src="<?=base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="<?=base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="<?=base_url()?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="<?=base_url()?>assets/dist/js/adminlte.min.js"></script>
 	
-
 	<script src="<?=base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 	<script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 	

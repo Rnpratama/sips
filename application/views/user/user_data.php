@@ -42,7 +42,7 @@
                         <td><?=$data->address?></td>
                         <td><?=$data->level == 1 ? "Admin" : "Kasir"?></td>
                         <td class="text-center" width="160px">
-                            <form action="<?=site_url('user/del'.$data->user_id)?>" method="post">
+                            <form action="<?=site_url('user/del')?>" method="post">
                                 <a href="<?=site_url('user/edit/'.$data->user_id)?>" class="btn btn-primary btn-xs">
                                     <i class="fa fa-pencil"></i> Update
                                  </a>

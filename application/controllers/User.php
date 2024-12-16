@@ -6,15 +6,23 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		check_not_login();
-		check_admin();
 		$this->load->model('user_m');
 		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
-		$data['row'] = $this->user_m->get();
+		// Mengambil data pengguna berdasarkan user_id dari sesi login
+		$logged_in_user = $this->session->userdata('user_id');
+		$data['row'] = $this->user_m->get($logged_in_user);
 		$this->template->load('template', 'user/user_data', $data);
+	}
+
+	public function category()
+	{
+		$logged_in_user = $this->session->userdata('user_id');
+		$data['row'] = $this->category_m->get_by_user($logged_in_user);
+		$this->template->load('template', 'category/category_data', $data);
 	}
 
 	public function add()

@@ -5,7 +5,8 @@ class Category_m extends CI_Model {
     public function get($id = null) 
     {
         $this->db->from('p_category');
-        if($id != null) {
+        $this->db->where('user_id', $this->session->userdata('user_id')); // Filter berdasarkan user_id
+        if ($id != null) {
             $this->db->where('category_id', $id);
         }
         $query = $this->db->get();
@@ -16,6 +17,7 @@ class Category_m extends CI_Model {
     {
         $params = [
             'name' => $post['category_name'],
+            'user_id' => $this->session->userdata('user_id'), // Ambil user_id dari session
         ];
         $this->db->insert('p_category', $params);
     }
@@ -27,12 +29,14 @@ class Category_m extends CI_Model {
             'updated' => date('Y-m-d H:i:s'),
         ];
         $this->db->where('category_id', $post['id']);
+        $this->db->where('user_id', $this->session->userdata('user_id')); // Pastikan user hanya dapat edit miliknya
         $this->db->update('p_category', $params);
     }
 
     public function del($id)
-	{
-		$this->db->where('category_id', $id);
-		$this->db->delete('p_category');
-	}
+    {
+        $this->db->where('category_id', $id);
+        $this->db->where('user_id', $this->session->userdata('user_id')); // Pastikan user hanya dapat hapus miliknya
+        $this->db->delete('p_category');
+    }
 }

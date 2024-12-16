@@ -51,7 +51,7 @@
                             <?=form_error('address')?>
                         </div>
                         <div class="form-group <?=form_error('level') ? 'has-error' : null?>">
-                            <label>Level *</label>
+                            <label>Level </label>
                             <select name="level" class="form-control">
                                 <?php $level = $this->input->post('level') ? $this->input->post('level') : $row->level ?>
                                 <option value="1">Admin</option>
