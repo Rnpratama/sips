@@ -21,7 +21,7 @@ class Stock_m extends CI_Model {
     public function get_stock_in()
     {
         $this->db->select('t_stock.stock_id, p_item.barcode,
-        p_item.name as item_name, qty, date, detail,
+        p_item.name as item_name, p_item.stock, date, detail,
         supplier.name as supplier_name, p_item.item_id');
         $this->db->from('t_stock');
         $this->db->join('p_item', 't_stock.item_id = p_item.item_id');
@@ -64,11 +64,20 @@ class Stock_m extends CI_Model {
         $params = [
             'item_id' => $post['item_id'],
             'type' => 'out',
-            'detail' => $post['detail'],
+            'detail' => $post['info'],
             'qty' => $post['qty'],
             'date' => $post['date'],
             'user_id' => $this->session->userdata('user_id'),
         ];
+        $date = date('Y-m-d H:i:s');
+
+        $update = [
+            'updated' => date('Y-m-d H:i:s')
+        ];
+
+        print_r($params);
         $this->db->insert('t_stock', $params);
+        $this->db->update('p_item', $update);
+        $this->db->where('item_id', $post['item_id']);
     }
 }

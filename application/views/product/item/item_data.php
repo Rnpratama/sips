@@ -25,7 +25,6 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Barcode</th>
                         <th>Name</th>
                         <th>Category</th>
                         <th>Unit</th>
@@ -40,12 +39,6 @@
                     foreach($row->result() as $key => $data) { ?>
                     <tr>
                         <td style="width: 5%;"><?=$no++?>.</td>
-                        <td>
-                            <?=$data->barcode?><br>
-                            <a href="<?=site_url('item/barcode_qrcode/'.$data->item_id)?>" class="btn btn-default btn-xs">
-                                Generator <i class="fa fa-barcode"></i>
-                            </a>
-                        </td>
                         <td><?=$data->name?></td>
                         <td><?=$data->category_name?></td>
                         <td><?=$data->unit_name?></td>

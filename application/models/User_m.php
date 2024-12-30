@@ -27,8 +27,6 @@ class User_m extends CI_Model {
 		$params['name'] = $post['fullname'];
 		$params['username'] = $post['username'];
 		$params['password'] = sha1($post['password']);
-		$params['address'] = $post['address'] != "" ? $post['address'] : null;
-		$params['level'] = $post['level'];
 		$this->db->insert('user', $params);
 	}
 
@@ -53,10 +51,10 @@ class User_m extends CI_Model {
 
 	public function register($post) {
 		$data = [
+			'user_id' => $post['user_id'],
 			'username' => $post['username'],
 			'password' => sha1($post['password']), // Password hashing for security
 			'name' => $post['name'],
-			'address' => $post['address'],
 			'level' => 1 // Example: 1 = Admin
 		];
 		$this->db->insert('user', $data);

@@ -27,7 +27,6 @@
                         <th>#</th>
                         <th>Username</th>
                         <th>Name</th>
-                        <th>Address</th>
                         <th>Level</th>
                         <th>Actions</th>
                     </tr>
@@ -39,7 +38,6 @@
                         <td style="width: 5%;"><?=$no++?>.</td>
                         <td><?=$data->username?></td>
                         <td><?=$data->name?></td>
-                        <td><?=$data->address?></td>
                         <td><?=$data->level == 1 ? "Admin" : "Kasir"?></td>
                         <td class="text-center" width="160px">
                             <form action="<?=site_url('user/del')?>" method="post">

@@ -29,9 +29,6 @@
                             <label>Date *</label>
                             <input type="date" name="date" value="<?=date('Y-m-d')?>" class="form-control" required>
                         </div>
-                        <div>
-                            <label for="barcode">Barcode *</label>
-                        </div>
                         <div class="form-group input-group">
                             <input type="hidden" name="item_id" id="item_id">
                             <input type="text" name="barcode" id="barcode" class="form-control" required autofocus>
@@ -60,15 +57,6 @@
                         <div class="form-group">
                             <label>Detail *</label>
                             <input type="text" name="detail" class="form-control" placeholder="Kulakan / tambahan / etc" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Supplier</label>
-                            <select name="supplier" class="form-control">
-                                <option value="">- Pilih</option>
-                                <?php foreach($supplier as $i => $data) {
-                                    echo '<option value="'.$data->supplier_id.'">'.$data->name.'</option>';
-                                } ?>
-                            </select>
                         </div>
                         <div class="form-group">
                             <label>Qty *</label>
@@ -102,7 +90,6 @@
                 <table class="table table-bordered table-striped" id="table1">
                     <thead>
                         <tr>
-                            <th>Barcode</th>
                             <th>Name</th>
                             <th>Unit</th>
                             <th>Price</th>
@@ -113,7 +100,6 @@
                     <tbody>
                         <?php foreach ($item as $i => $data) { ?>
                         <tr>
-                            <td><?=$data->barcode?></td>
                             <td><?=$data->name?></td>
                             <td><?=$data->unit_name?></td>
                             <td class="text-right"><?=indo_currency($data->price)?></td>
@@ -121,7 +107,6 @@
                             <td class="text-right">
                                 <button class="btn btn-xs btn-info" id="select"
                                     data-id="<?=$data->item_id?>"
-                                    data-barcode="<?=$data->barcode?>"
                                     data-name="<?=$data->name?>"
                                     data-unit="<?=$data->unit_name?>"
                                     data-stock="<?=$data->stock?>">
@@ -141,7 +126,6 @@
 $(document).ready(function() {
     $(document).on('click', '#select', function() {
         var item_id = $(this).data('id');
-        var barcode = $(this).data('barcode');
         var name = $(this).data('name'); 
         var unit_name = $(this).data('unit'); 
         var stock = $(this).data('stock');

@@ -25,8 +25,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Barcode</th>
                         <th>Product Item</th>
+                        <th>Detail Produk</th>
                         <th>Qty</th>
                         <th>Date</th>
                         <th>Actions</th>
@@ -37,8 +37,8 @@
                     foreach($row as $key => $data) { ?>
                     <tr>
                         <td style="width: 5%;"><?=$no++?>.</td>
-                        <td><?=$data->barcode?></td>
                         <td><?=$data->item_name?></td>
+                        <td><?=$data->detail?></td>
                         <td class="text-right"><?=$data->qty?></td>
                         <td class="text-center"><?=indo_date($data->date)?></td>
                         <td class="text-center" width="160px">
@@ -47,7 +47,6 @@
                             data-barcode="<?=$data->barcode?>"
                             data-itemname="<?=$data->item_name?>"
                             data-detail="<?=$data->detail?>"
-                            data-suppliername="<?=$data->supplier_name?>"
                             data-qty="<?=$data->qty?>"
                             data-date="<?=indo_date($data->date)?>">
                                 <i class="fa fa-eye"></i> Detail
@@ -78,10 +77,6 @@
                 <table class="table table-bordered no-mardgin">
                     <tbody>
                         <tr>
-                            <th style="width:35%">Barcode</th>
-                            <td><span id="barcode"></span></td>
-                        </tr>
-                        <tr>
                             <th>Item Name</th>
                             <td><span id="item_name"></span></td>
                         </tr>
@@ -93,10 +88,6 @@
                             <th>Qty</th>
                             <td><span id="qty"></span></td>
                         </tr>
-                        </tr>
-                        <tr>
-                            <th>Info</th>
-                            <td><span id="info"></span></td>
                         </tr>
                         <tr>
                             <th>Date</th>
@@ -112,17 +103,15 @@
 <script>
 $(document).ready(function() {
     $(document).on('click', '#set_dtl', function() {
-        var barcode = $(this).data('barcode');
         var itemname = $(this).data('itemname');
         var detail = $(this).data('detail');
         var qty = $(this).data('qty');
         var date = $(this).data('date');
-        $('#barcode').text(barcode);
         $('#item_name').text(itemname);
         $('#detail').text(detail);
         $('#qty').text(qty);
         $('#date').text(date);
-        $('#detail').text('detail');
+
     })
 })
 </script>

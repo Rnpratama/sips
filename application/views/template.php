@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>KASIRPLUS</title>
+	<title>SIPS</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=base_url()?>assets/bower_components/font-awesome/css/font-awesome.min.css">
@@ -15,14 +15,15 @@
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+	
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini <?=$this->uri->segment(1) == 'sale' ? 'sidebar-collapse' : null?>">
 
 	<div class="wrapper">
 		<header class="main-header">
 			<a href="<?=base_url('dashboard')?>" class="logo">
 				<span class="logo-mini">K<b>P</b></span>
-				<span class="logo-lg"><b>KASIRPLUS</b></span>
+				<span class="logo-lg"><b>SIPS</b></span>
 			</a>
 			<nav class="navbar navbar-static-top">
 				<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -116,12 +117,6 @@
 					<li <?=$this->uri->segment(1) == 'dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : ''?>>
 						<a href="<?=site_url('dashboard')?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
 					</li>
-					<li <?=$this->uri->segment(1) == 'supplier' ? 'class="active"' : ''?>>
-						<a href="<?=site_url('supplier')?>"><i class="fa fa-truck"></i> <span>Suppliers</span></a>
-					</li>
-					<li <?=$this->uri->segment(1) == 'customer' ? 'class="active"' : ''?>>
-						<a href="<?=site_url('customer')?>"><i class="fa fa-users"></i> <span>Customers</span></a>
-					</li>
 					<li class="treeview <?=$this->uri->segment(1) == 'category' || $this->uri->segment(1) == 'unit' || $this->uri->segment(1) == 'item' ? 'active' : ''?>">
 						<a href="#">
 							<i class="fa fa-archive"></i> <span>Products</span>
@@ -133,30 +128,23 @@
 							<li <?=$this->uri->segment(1) == 'item' ? 'class="active"' : ''?>><a href="<?=site_url('item')?>"><i class="fa fa-circle-o"></i> Items</a></li>
 						</ul>
 					</li>
-					<li class="treeview <?=$this->uri->segment(1) == 'stock' ? 'active' : ''?>">
+					<li class="treeview <?=$this->uri->segment(1) == 'stock'  || $this->uri->segment(1) == 'sale' ? 'active' : ''?>">
 						<a href="#">
-							<i class="fa fa-shopping-cart"></i> <span>Transaction</span>
+							<i class="fa fa-shopping-cart"></i> <span>Transaksi</span>
 							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 						</a>
 						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-circle-o"></i> Sales</a></li>
+							<li <?=$this->uri->segment(1) == 'sale' ? 'class="active"' : ''?>>
+								<a href="<?=site_url('sale')?>"><i class="fa fa-circle-o"></i> Sales</a>
+							</li>
 							<li <?=$this->uri->segment(1) == 'stock' && $this->uri->segment(2) == 'in' ? 'class="active"' : ''?>>
-								<a href="<?=site_url('stock/in')?>"><i class="fa fa-circle-o"></i> Stock In</a>
+								<a href="<?=site_url('stock/in')?>"><i class="fa fa-circle-o"></i> Barang Masuk</a>
 							</li>
 							<li <?=$this->uri->segment(1) == 'stock' && $this->uri->segment(2) == 'out' ? 'class="active"' : ''?>>
-								<a href="<?=site_url('stock/out')?>"><i class="fa fa-circle-o"></i> Stock Out</a></li>
+								<a href="<?=site_url('stock/out')?>"><i class="fa fa-circle-o"></i> Barang Keluar</a></li>
 						</ul>
 					</li>
-					<li class="treeview">
-						<a href="#">
-							<i class="fa fa-pie-chart"></i> <span>Reports</span>
-							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-circle-o"></i> Sales</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i> Stocks</a></li>
-						</ul>
-					</li>
+				
 					<?php  if($this->session->userdata('level') == 1) {?>
 					<li class="header">SETTINGS</li>
 					<li><a href="<?=site_url('user')?>"><i class="fa fa-user"></i> <span>Users</span></a></li>

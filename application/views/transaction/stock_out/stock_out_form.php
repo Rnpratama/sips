@@ -29,9 +29,6 @@
                             <label>Date *</label>
                             <input type="date" name="date" value="<?=date('Y-m-d')?>" class="form-control" required>
                         </div>
-                        <div>
-                            <label for="barcode">Barcode *</label>
-                        </div>
                         <div class="form-group input-group">
                             <input type="hidden" name="item_id" id="item_id">
                             <input type="text" name="barcode" id="barcode" class="form-control" required autofocus>

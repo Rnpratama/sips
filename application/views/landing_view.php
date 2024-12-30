@@ -86,18 +86,18 @@
                 <!-- Basic Plan -->
                 <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                     <h3 class="text-xl font-bold text-gray-800">Basic</h3>
-                    <p class="mt-4 text-gray-600">Rp 19.000 / bulan</p>
+                    <p class="mt-4 text-gray-600">Rp 19.000 / Minggu</p>
                 </div>
                 <!-- Standard Plan -->
                 <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                     <h3 class="text-xl font-bold text-gray-800">Standard</h3>
-                    <p class="mt-4 text-gray-600">Rp 49.000 / bulan</p>
+                    <p class="mt-4 text-gray-600">Rp 49.000 / Bulan</p>
                     
                 </div>
                 <!-- Premium Plan -->
                 <div class="bg-gray-100 p-6 rounded-lg shadow-lg text-center">
                     <h3 class="text-xl font-bold text-gray-800">Premium</h3>
-                    <p class="mt-4 text-gray-600">Rp 99.000 / bulan</p>
+                    <p class="mt-4 text-gray-600">Rp 99.000 / Tahun</p>
                 </div>
             </div>
         </div>

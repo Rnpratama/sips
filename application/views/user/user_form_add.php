@@ -45,11 +45,7 @@
                             <input type="password" name="passconf" value="<?=set_value('passconf')?>" class="form-control">
                             <?=form_error('passconf')?>
                         </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea name="address" class="form-control"><?=set_value('address')?></textarea>
-                            <?=form_error('address')?>
-                        </div>
+                        
                         <div class="form-group <?=form_error('level') ? 'has-error' : null?>">
                             <label>Level *</label>
                             <select name="level" class="form-control">

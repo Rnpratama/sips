@@ -25,11 +25,6 @@
                 <div class="col-md-4 col-md-offset-4">
                     <?php echo form_open_multipart('item/process') ?>
                         <div class="form-group">
-                            <label>Barcode *</label>
-                            <input type="hidden" name="id" value="<?=$row->item_id?>">
-                            <input type="text" name="barcode" value="<?=$row->barcode?>" class="form-control" required>
-                        </div>
-                        <div class="form-group">
                             <label for="product_name">Product Name *</label>
                             <input type="text" name="product_name" id="product_name" value="<?=$row->name?>" class="form-control" required>
                         </div>
